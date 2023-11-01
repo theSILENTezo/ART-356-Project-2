@@ -15,7 +15,7 @@ let data_count = 1;
 function preload() {
   data = loadTable(url, 'csv', 'header');
 
-  
+  /*
   //images
    disney = loadImage("Disney_Oscar.jgp");
    leo = loadImage("Leonardo_DiCaprio.jpg");
@@ -23,7 +23,7 @@ function preload() {
    dan = loadImage("Daniel_Day-Lewis.jgp");
    dennis = loadImage("Dennis_Muren.jgp");
    streep = loadImage("Meryl Streep.jgp");
-  
+  */
 }
 
 function setup() {
@@ -32,6 +32,7 @@ function setup() {
 
 function draw() {
   background(0);
+  
 
   if (data){
     let numRows = data.getRowCount();
@@ -57,13 +58,19 @@ function draw() {
       rect(x, y, w, h);
     }
   }
+
+  //Loads in Stats of Oscar Winner
+  showFace();
+  stats;
 }
 
 function showFace() {
     for (let d = 0; d < data.length; d++) {
-        if (bar_dist < data) {
-          data[d].displayData();
-        }
+      bar_dist = dist(wins[d].x, wins[d].y, mouseX, mouseY);
+
+      if (bar_dist < data[d]) {
+        data[d].displayData();
+      }
     }
 
     
@@ -80,21 +87,22 @@ class stats{
   
 
 
+  //Displays a person's Oscar stats
   displayData(){
-    fill(255, 255, 180);
+    fill(219, 176, 83);
     rect(mouseX, mouseY, 500, 120);
 
     textAlign(LEFT);
     fill("black");
 
     text("Name:", mouseX+10, mouseY+30);
-    text("Number of Times Nominated:", mouseX+10, mouseY+30);
-    text("Oscars Won:", mouseX+10, mouseY+30);
+    text("Number of Times Nominated:", mouseX+10, mouseY+55);
+    text("Oscars Won:", mouseX+10, mouseY+80);
 
-    fill(82, 130, 88);
+    fill(53, 161, 66);
     text(ths.data_split[0], mouseX+140, mouseY+30);
-    text(ths.data_split[1], mouseX+140, mouseY+30);
-    text(ths.data_split[2], mouseX+140, mouseY+30);
+    text(ths.data_split[1], mouseX+235, mouseY+55);
+    text(ths.data_split[2], mouseX+290, mouseY+80);
   }
 
   printData(){
