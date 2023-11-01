@@ -1,6 +1,6 @@
 let oscar = [];
 let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTra-zd_xv5k8Fq_J5obXEdtjECbLFmK-vk8wYLFrYt37yiTD4kEOCA734UmLvH8yjMG3ms23CjdvQL/pub?gid=0&single=true&output=csv";
-let bar_dist;
+let bar_dist; //distance bewtween the mouse coordinates and the bar
 let data_count = 1;
 
 //images array
@@ -35,7 +35,7 @@ function draw() {
 
     let wins = oscar_data.getColumn('Won');
     let noms = oscar_data.getColumn('Nominated');
-    let celeb = oscar_data.getColumn('Celebrity');
+    let name = oscar_data.getColumn('Celebrity');
     
     //Creates bar graph 
     for(let i = 0; i < numRows; i++){
@@ -46,10 +46,12 @@ function draw() {
 
       fill(255);
       textSize(14);
-      text(celeb[i], x, y-5);
+      text(name[i], x, y-5);
 
       rect(x, y, w, h);
     }
+
+    
   }
 
   //Loads in Stats of Oscar Winner
@@ -57,11 +59,12 @@ function draw() {
 }
 
 function showFace() {
-    for (let d = 0; d < data.length; d++) {
+    for (let d = 0; d < numRows; d++) {
       bar_dist = dist(wins[d].x, wins[d].y, mouseX, mouseY);
 
-      if (bar_dist < data[d]) {
-        data[d].displayData();
+      if (bar_dist < oscar[d].bar_radius) {
+        //celeb[d];
+        oscar[d].displayData();
       }
     }
 
@@ -72,14 +75,30 @@ class stats{
   constructor(){
     this.x;
     this.y;
+
+    this.bar_radius;
     
     this.data;
     this.data_split;
+
+    this.init;
+    this.printData;
   }
   
   init(){
-    this.data = data[data_count];
+    this.bar_radius = rect.width/10;
+
+    this.x = mouseX;
+    this.y = mouseY;
+
+    this.data = oscar_data[data_count];
     this.data_split = split(this.data, ',');
+
+    if(data_count != oscar_data.length){
+      data_count++;
+    }else{
+      print("Its Over.");
+    }
   }
 
 
