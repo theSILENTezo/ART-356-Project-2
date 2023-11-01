@@ -5,24 +5,19 @@ let data_count = 1;
 //let celeb = [];
 
 //images
-    let disney;
-    let leo;
-    let kat;
-    let dan;
-    let dennis;
-    let streep;
+    let celeb = [];
 
 function preload() {
   data = loadTable(url, 'csv', 'header');
 
   /*
   //images
-   disney = loadImage("Disney_Oscar.jgp");
-   leo = loadImage("Leonardo_DiCaprio.jpg");
-   kat = loadImage("Katharine_Hepburn.jgp");
-   dan = loadImage("Daniel_Day-Lewis.jgp");
-   dennis = loadImage("Dennis_Muren.jgp");
-   streep = loadImage("Meryl Streep.jgp");
+   celeb[0] = loadImage("image/Disney_Oscar.jgp");
+   celeb[1] = loadImage("image/Leonardo_DiCaprio.jpg");
+   celeb[2] = loadImage("image/Katharine_Hepburn.jgp");
+   celeb[3] = loadImage("image/Daniel_Day-Lewis.jgp");
+   celeb[4] = loadImage("image/Dennis_Muren.jgp");
+   celeb[5] = loadImage("image/Meryl Streep.jgp");
   */
 }
 
@@ -85,6 +80,10 @@ class stats{
     this.data_split;
   }
   
+  init(){
+    this.data = data[data_count];
+    this.data_split = split(this.data, ',');
+  }
 
 
   //Displays a person's Oscar stats
