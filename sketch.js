@@ -9,7 +9,7 @@ let data_count = 1;
 function preload() {
   oscar_data = loadTable(url, 'csv', 'header');
 
-  
+  /*
   //images
    celeb[0] = loadImage("image/Disney_Oscar.jgp");
    celeb[1] = loadImage("image/Leonardo_DiCaprio.jpg");
@@ -17,7 +17,7 @@ function preload() {
    celeb[3] = loadImage("image/Daniel_Day-Lewis.jgp");
    celeb[4] = loadImage("image/Dennis_Muren.jgp");
    celeb[5] = loadImage("image/Meryl Streep.jgp");
-  
+  */
 }
 
 function setup() {
@@ -49,9 +49,8 @@ function draw() {
       text(name[i], x, y-5);
 
       rect(x, y, w, h);
+      //image(celeb[i], i*10, i*10, 800/5, 450/5);
     }
-
-    
   }
 
   //Loads in Stats of Oscar Winner
@@ -68,7 +67,14 @@ function showFace() {
       }
     }
 
-    
+    //baby way out, if I can't get the complex hover to work
+    /*
+    if(mouseX && mouseY === "Walt Disney"){
+      print("Name:", width/2, height/2);
+      print("Number of Times Nominated:", this.data_split[1]);
+      print("Oscars Won:", this.data_split[2]);
+    }
+    */
 }
 
 class stats{
@@ -77,6 +83,7 @@ class stats{
     this.y;
 
     this.bar_radius;
+    this.design_num;
     
     this.data;
     this.data_split;
@@ -86,6 +93,7 @@ class stats{
   }
   
   init(){
+    ths.design_num = int(random(5));
     this.bar_radius = rect.width/10;
 
     this.x = mouseX;
