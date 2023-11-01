@@ -10,7 +10,7 @@ let data_count = 1;
 function preload() {
   data = loadTable(url, 'csv', 'header');
 
-  /*
+  
   //images
    celeb[0] = loadImage("image/Disney_Oscar.jgp");
    celeb[1] = loadImage("image/Leonardo_DiCaprio.jpg");
@@ -18,7 +18,7 @@ function preload() {
    celeb[3] = loadImage("image/Daniel_Day-Lewis.jgp");
    celeb[4] = loadImage("image/Dennis_Muren.jgp");
    celeb[5] = loadImage("image/Meryl Streep.jgp");
-  */
+  
 }
 
 function setup() {
