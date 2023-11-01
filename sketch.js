@@ -1,14 +1,13 @@
-let data;
+let oscar = [];
 let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTra-zd_xv5k8Fq_J5obXEdtjECbLFmK-vk8wYLFrYt37yiTD4kEOCA734UmLvH8yjMG3ms23CjdvQL/pub?gid=0&single=true&output=csv";
 let bar_dist;
 let data_count = 1;
-//let celeb = [];
 
-//images
+//images array
     let celeb = [];
 
 function preload() {
-  data = loadTable(url, 'csv', 'header');
+  oscar_data = loadTable(url, 'csv', 'header');
 
   
   //images
@@ -29,15 +28,14 @@ function draw() {
   background(0);
   
 
-  if (data){
-    let numRows = data.getRowCount();
+  if (oscar_data){
 
-    let wins = data.getColumn('Won');
-    let noms = data.getColumn('Nominated');
-    let celeb = data.getColumn('Celebrity');
+    //Receives Data from csv
+    let numRows = oscar_data.getRowCount();
 
-    rect(50, 350, wins[0], 10);
-
+    let wins = oscar_data.getColumn('Won');
+    let noms = oscar_data.getColumn('Nominated');
+    let celeb = oscar_data.getColumn('Celebrity');
     
     //Creates bar graph 
     for(let i = 0; i < numRows; i++){
@@ -55,7 +53,6 @@ function draw() {
   }
 
   //Loads in Stats of Oscar Winner
-  showFace();
   stats;
 }
 
@@ -105,22 +102,22 @@ class stats{
   }
 
   printData(){
+    //If unable to get the data
+      if(this.data_split[0] == "") {
+        this.data_split[0] = "undefined";
+      }
+      
+      if(this.data_split[1] == "") {
+        this.data_split[1] = "undefined";
+      }
+      
+      if(this.data_split[2] == "") {
+        this.data_split[2] = "undefined";
+      }
 
-
-    if(this.data_split[0] == "") {
-      this.data_split[0] = "undefined";
-    }
-    
-    if(this.data_split[1] == "") {
-      this.data_split[1] = "undefined";
-    }
-    
-    if(this.data_split[2] == "") {
-      this.data_split[2] = "undefined";
-    }
-
-    print("Name:", this.data_split[0]);
-    print("Number of Times Nominated:", this.data_split[1]);
-    print("Oscars Won:", this.data_split[2]);
+    //Displays Oscar Stats
+      print("Name:", this.data_split[0]);
+      print("Number of Times Nominated:", this.data_split[1]);
+      print("Oscars Won:", this.data_split[2]);
   }
 }
