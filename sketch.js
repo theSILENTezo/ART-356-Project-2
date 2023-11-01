@@ -11,12 +11,12 @@ function preload() {
 
   /*
   //images
-   celeb[0] = loadImage("image/Disney_Oscar.jgp");
-   celeb[1] = loadImage("image/Leonardo_DiCaprio.jpg");
-   celeb[2] = loadImage("image/Katharine_Hepburn.jgp");
-   celeb[3] = loadImage("image/Daniel_Day-Lewis.jgp");
-   celeb[4] = loadImage("image/Dennis_Muren.jgp");
-   celeb[5] = loadImage("image/Meryl Streep.jgp");
+   celeb[0] = loadImage("image/Disney Oscar.png");
+   celeb[1] = loadImage("image/Leonardo DiCaprio.png");
+   celeb[2] = loadImage("image/Katharine Hepburn.png");
+   celeb[3] = loadImage("image/Daniel Day-Lewis.png");
+   celeb[4] = loadImage("image/Dennis Muren.png");
+   celeb[5] = loadImage("image/Meryl Streep.png");
   */
 }
 
@@ -29,7 +29,6 @@ function draw() {
   
 
   if (oscar_data){
-
     //Receives Data from csv
     let numRows = oscar_data.getRowCount();
 
@@ -52,6 +51,21 @@ function draw() {
       //image(celeb[i], i*10, i*10, 800/5, 450/5);
     }
   }
+
+  //Disney
+  if(mouseX > 0 && mouseX < 740 && mouseY > 90 && mouseY < 120){
+    fill(219, 176, 83);
+    rect(mouseX, mouseY, 500, 120);
+    textSize(24);
+    fill("black");
+    text("Oscars Won:", mouseX+5, mouseY+28);
+    text("Times Nominated:", mouseX+5, mouseY+70);
+    fill(53, 161, 66);
+    text("22", mouseX+148, mouseY+28);
+    text("59", mouseX+200, mouseY+70);
+  }
+
+  
 
   //Loads in Stats of Oscar Winner
   stats;
