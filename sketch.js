@@ -3,6 +3,9 @@ let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTra-zd_xv5k8Fq_J5obX
 let bar_dist; //distance bewtween the mouse coordinates and the bar
 let data_count = 1;
 
+//background image
+  let bg;
+
 //images array
     let celeb = [];
 
@@ -10,6 +13,8 @@ function preload() {
   oscar_data = loadTable(url, 'csv', 'header');
 
   //images
+  bg = loadImage("images/oscars_bg.jpg");
+
    celeb[0] = loadImage("images/Disney_Oscar.jpg");
    celeb[1] = loadImage("images/Leonardo_DiCaprio.jpg");
    celeb[2] = loadImage("images/Katharine_Hepburn.jpg");
@@ -19,11 +24,11 @@ function preload() {
 }
 
 function setup() {
-  let canvas = createCanvas(800, 800);
+  let canvas = createCanvas(1080, 500);
 }
 
 function draw() {
-  background(0);
+  background(bg);
   
   //Loads in csv's data
   if (oscar_data){
@@ -36,7 +41,7 @@ function draw() {
     
     //Creates bar graph 
     for(let i = 0; i < numRows; i++){
-      let x = 50;
+      let x = 100;
       let y = 100 + i*50;
       let w = wins[i]*30;
       let h = 10;
@@ -51,7 +56,7 @@ function draw() {
   }
 
   //Disney
-  if(mouseX > 0 && mouseX < 740 && mouseY > 90 && mouseY < 120){
+  if(mouseX > 100 && mouseX < 765 && mouseY > 90 && mouseY < 120){
     fill(219, 176, 83);
     rect(mouseX, mouseY, 610, 120);
     image(celeb[0], mouseX, mouseY, 120, 120);
@@ -69,7 +74,7 @@ function draw() {
   }
 
   //DiCaprio
-  if(mouseX > 0 && mouseX < 94 && mouseY > 150 && mouseY < 165){
+  if(mouseX > 100 && mouseX < 135 && mouseY > 150 && mouseY < 165){
     fill(219, 176, 83);
     rect(mouseX, mouseY, 610, 120);
     image(celeb[1], mouseX, mouseY, 120, 120);
@@ -87,7 +92,7 @@ function draw() {
   }
 
   //Hepburn
-  if(mouseX > 0 && mouseX < 174 && mouseY > 200 && mouseY < 215){
+  if(mouseX > 100 && mouseX < 222 && mouseY > 200 && mouseY < 215){
     fill(219, 176, 83);
     rect(mouseX, mouseY, 610, 120);
     image(celeb[2], mouseX, mouseY, 120, 120);
@@ -105,7 +110,7 @@ function draw() {
   }
 
   //Day-Lewis
-  if(mouseX > 0 && mouseX < 150 && mouseY > 250 && mouseY < 265){
+  if(mouseX > 100 && mouseX < 193 && mouseY > 250 && mouseY < 265){
     fill(219, 176, 83);
     rect(mouseX, mouseY, 610, 120);
     image(celeb[3], mouseX, mouseY, 120, 120);
@@ -123,7 +128,7 @@ function draw() {
   }
 
   //Muren
-  if(mouseX > 0 && mouseX < 330 && mouseY > 300 && mouseY < 315){
+  if(mouseX > 100 && mouseX < 376 && mouseY > 300 && mouseY < 315){
     fill(219, 176, 83);
     rect(mouseX, mouseY, 610, 120);
     image(celeb[4], mouseX, mouseY, 120, 120);
@@ -141,7 +146,7 @@ function draw() {
   }
 
   //Streep
-  if(mouseX > 0 && mouseX < 150 && mouseY > 351 && mouseY < 363){
+  if(mouseX > 100 && mouseX < 193 && mouseY > 351 && mouseY < 363){
     fill(219, 176, 83);
     rect(mouseX, mouseY, 610, 120);
     image(celeb[5], mouseX, mouseY, 120, 120);
@@ -171,15 +176,6 @@ function showFace() {
         oscar[d].displayData();
       }
     }
-
-    //baby way out, if I can't get the complex hover to work
-    /*
-    if(mouseX && mouseY === "Walt Disney"){
-      print("Name:", width/2, height/2);
-      print("Number of Times Nominated:", this.data_split[1]);
-      print("Oscars Won:", this.data_split[2]);
-    }
-    */
 }
 
 class stats{
