@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   color: white;
-  background-color: darkslategrey;
+  background-color: rgb(117, 33, 33);
 }
 
 canvas {
