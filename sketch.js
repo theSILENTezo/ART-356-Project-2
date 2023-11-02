@@ -9,15 +9,13 @@ let data_count = 1;
 function preload() {
   oscar_data = loadTable(url, 'csv', 'header');
 
-  /*
   //images
-   celeb[0] = loadImage("image/Disney Oscar.png");
-   celeb[1] = loadImage("image/Leonardo DiCaprio.png");
-   celeb[2] = loadImage("image/Katharine Hepburn.png");
-   celeb[3] = loadImage("image/Daniel Day-Lewis.png");
-   celeb[4] = loadImage("image/Dennis Muren.png");
-   celeb[5] = loadImage("image/Meryl Streep.png");
-  */
+   celeb[0] = loadImage("images/Disney_Oscar.jpg");
+   celeb[1] = loadImage("images/Leonardo_DiCaprio.jpg");
+   celeb[2] = loadImage("images/Katharine_Hepburn.jpg");
+   celeb[3] = loadImage("images/Daniel_Day-Lewis.jpg");
+   celeb[4] = loadImage("images/Dennis_Muren.jpg");
+   celeb[5] = loadImage("images/Meryl_Streep.jpg");
 }
 
 function setup() {
@@ -55,103 +53,109 @@ function draw() {
   //Disney
   if(mouseX > 0 && mouseX < 740 && mouseY > 90 && mouseY < 120){
     fill(219, 176, 83);
-    rect(mouseX, mouseY, 500, 120);
+    rect(mouseX, mouseY, 610, 120);
+    image(celeb[0], mouseX, mouseY, 120, 120);
     textSize(24);
     fill("black");
-    text("Name:", mouseX+5, mouseY+28);
-    text("Oscars Won:", mouseX+5, mouseY+53);
-    text("Times Nominated:", mouseX+5, mouseY+79);
-    text("Fun Fact:", mouseX+5, mouseY+105);
+    text("Name:", mouseX+125, mouseY+28);
+    text("Oscars Won:", mouseX+125, mouseY+53);
+    text("Times Nominated:", mouseX+125, mouseY+79);
+    text("Fun Fact:", mouseX+125, mouseY+105);
     fill(53, 161, 66);
-    text("Walt Disney", mouseX+78, mouseY+28);
-    text("22", mouseX+148, mouseY+53);
-    text("59", mouseX+200, mouseY+79);
-    text("Most wins by a single person", mouseX+109, mouseY+105);
+    text("Walt Disney", mouseX+203, mouseY+28);
+    text("22", mouseX+265, mouseY+53);
+    text("59", mouseX+325, mouseY+79);
+    text("Most wins by a single person", mouseX+234, mouseY+105);
   }
 
   //DiCaprio
   if(mouseX > 0 && mouseX < 94 && mouseY > 150 && mouseY < 165){
     fill(219, 176, 83);
-    rect(mouseX, mouseY, 500, 120);
+    rect(mouseX, mouseY, 610, 120);
+    image(celeb[1], mouseX, mouseY, 120, 120);
     textSize(24);
     fill("black");
-    text("Name:", mouseX+5, mouseY+28);
-    text("Oscars Won:", mouseX+5, mouseY+53);
-    text("Times Nominated:", mouseX+5, mouseY+79);
-    text("Fun Fact:", mouseX+5, mouseY+105);
+    text("Name:", mouseX+125, mouseY+28);
+    text("Oscars Won:", mouseX+125, mouseY+53);
+    text("Times Nominated:", mouseX+125, mouseY+79);
+    text("Fun Fact:", mouseX+125, mouseY+105);
     fill(53, 161, 66);
-    text("Leonardo DiCaprio", mouseX+78, mouseY+28);
-    text("1", mouseX+148, mouseY+53);
-    text("7", mouseX+200, mouseY+79);
-    text("Finally got one", mouseX+109, mouseY+105);
+    text("Leonardo DiCaprio", mouseX+203, mouseY+28);
+    text("1", mouseX+265, mouseY+53);
+    text("7", mouseX+325, mouseY+79);
+    text("Finally got one", mouseX+234, mouseY+105);
   }
 
   //Hepburn
   if(mouseX > 0 && mouseX < 174 && mouseY > 200 && mouseY < 215){
     fill(219, 176, 83);
-    rect(mouseX, mouseY, 500, 120);
+    rect(mouseX, mouseY, 610, 120);
+    image(celeb[2], mouseX, mouseY, 120, 120);
     textSize(24);
     fill("black");
-    text("Name:", mouseX+5, mouseY+28);
-    text("Oscars Won:", mouseX+5, mouseY+53);
-    text("Times Nominated:", mouseX+5, mouseY+79);
-    text("Fun Fact:", mouseX+5, mouseY+105);
+    text("Name:", mouseX+125, mouseY+28);
+    text("Oscars Won:", mouseX+125, mouseY+53);
+    text("Times Nominated:", mouseX+125, mouseY+79);
+    text("Fun Fact:", mouseX+125, mouseY+105);
     fill(53, 161, 66);
-    text("Katharine Hepburn", mouseX+78, mouseY+28);
-    text("4", mouseX+148, mouseY+53);
-    text("12", mouseX+200, mouseY+79);
-    text("Most wins for best actress", mouseX+109, mouseY+105);
+    text("Katharine Hepburn", mouseX+203, mouseY+28);
+    text("4", mouseX+265, mouseY+53);
+    text("12", mouseX+325, mouseY+79);
+    text("Most wins for best actress", mouseX+234, mouseY+105);
   }
 
   //Day-Lewis
   if(mouseX > 0 && mouseX < 150 && mouseY > 250 && mouseY < 265){
     fill(219, 176, 83);
-    rect(mouseX, mouseY, 500, 120);
+    rect(mouseX, mouseY, 610, 120);
+    image(celeb[3], mouseX, mouseY, 120, 120);
     textSize(24);
     fill("black");
-    text("Name:", mouseX+5, mouseY+28);
-    text("Oscars Won:", mouseX+5, mouseY+53);
-    text("Times Nominated:", mouseX+5, mouseY+79);
-    text("Fun Fact:", mouseX+5, mouseY+105);
+    text("Name:", mouseX+125, mouseY+28);
+    text("Oscars Won:", mouseX+125, mouseY+53);
+    text("Times Nominated:", mouseX+125, mouseY+79);
+    text("Fun Fact:", mouseX+125, mouseY+105);
     fill(53, 161, 66);
-    text("Daniel Day-Lewis", mouseX+78, mouseY+28);
-    text("3", mouseX+148, mouseY+53);
-    text("6", mouseX+200, mouseY+79);
-    text("Most wins for best actor", mouseX+109, mouseY+105);
+    text("Daniel Day-Lewis", mouseX+203, mouseY+28);
+    text("3", mouseX+265, mouseY+53);
+    text("6", mouseX+325, mouseY+79);
+    text("Most wins for best actor", mouseX+234, mouseY+105);
   }
 
   //Muren
   if(mouseX > 0 && mouseX < 330 && mouseY > 300 && mouseY < 315){
     fill(219, 176, 83);
-    rect(mouseX, mouseY, 500, 120);
+    rect(mouseX, mouseY, 610, 120);
+    image(celeb[4], mouseX, mouseY, 120, 120);
     textSize(24);
     fill("black");
-    text("Name:", mouseX+5, mouseY+28);
-    text("Oscars Won:", mouseX+5, mouseY+53);
-    text("Times Nominated:", mouseX+5, mouseY+79);
-    text("Fun Fact:", mouseX+5, mouseY+105);
+    text("Name:", mouseX+125, mouseY+28);
+    text("Oscars Won:", mouseX+125, mouseY+53);
+    text("Times Nominated:", mouseX+125, mouseY+79);
+    text("Fun Fact:", mouseX+125, mouseY+105);
     fill(53, 161, 66);
-    text("Dennis Muren", mouseX+78, mouseY+28);
-    text("9", mouseX+148, mouseY+53);
-    text("13", mouseX+200, mouseY+79);
-    text("Most wins for visual effects", mouseX+109, mouseY+105);
+    text("Dennis Muren", mouseX+203, mouseY+28);
+    text("9", mouseX+265, mouseY+53);
+    text("13", mouseX+325, mouseY+79);
+    text("Most wins for visual effects", mouseX+234, mouseY+105);
   }
 
   //Streep
   if(mouseX > 0 && mouseX < 150 && mouseY > 351 && mouseY < 363){
     fill(219, 176, 83);
-    rect(mouseX, mouseY, 500, 120);
+    rect(mouseX, mouseY, 610, 120);
+    image(celeb[5], mouseX, mouseY, 120, 120);
     textSize(24);
     fill("black");
-    text("Name:", mouseX+5, mouseY+28);
-    text("Oscars Won:", mouseX+5, mouseY+53);
-    text("Times Nominated:", mouseX+5, mouseY+79);
-    text("Fun Fact:", mouseX+5, mouseY+105);
+    text("Name:", mouseX+125, mouseY+28);
+    text("Oscars Won:", mouseX+125, mouseY+53);
+    text("Times Nominated:", mouseX+125, mouseY+79);
+    text("Fun Fact:", mouseX+125, mouseY+105);
     fill(53, 161, 66);
-    text("Meryl Streep", mouseX+78, mouseY+28);
-    text("3", mouseX+148, mouseY+53);
-    text("21", mouseX+200, mouseY+79);
-    text("Most acting nominations of all time", mouseX+109, mouseY+105);
+    text("Meryl Streep", mouseX+203, mouseY+28);
+    text("3", mouseX+265, mouseY+53);
+    text("21", mouseX+325, mouseY+79);
+    text("Most acting nominations of all time", mouseX+234, mouseY+105);
   }
 
   //Loads in Stats of Oscar Winner
