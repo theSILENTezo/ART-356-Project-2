@@ -1,7 +1,5 @@
 let oscar = [];
 let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTra-zd_xv5k8Fq_J5obXEdtjECbLFmK-vk8wYLFrYt37yiTD4kEOCA734UmLvH8yjMG3ms23CjdvQL/pub?gid=0&single=true&output=csv";
-let bar_dist; //distance bewtween the mouse coordinates and the bar
-let data_count = 1;
 
 //background image
   let bg;
@@ -13,7 +11,7 @@ function preload() {
   oscar_data = loadTable(url, 'csv', 'header');
 
   //images
-  bg = loadImage("images/oscars_bg.jpg");
+    bg = loadImage("images/oscars_bg.jpg");
 
    celeb[0] = loadImage("images/Disney_Oscar.jpg");
    celeb[1] = loadImage("images/Leonardo_DiCaprio.jpg");
@@ -51,9 +49,16 @@ function draw() {
       text(name[i], x, y-5);
 
       rect(x, y, w, h);
-      //image(celeb[i], i*10, i*10, 800/5, 450/5);
     }
   }
+
+  //Displays more stats if user hovers over bar
+    showFace();
+
+}
+
+function showFace() {
+  //If user hovers over a bar, display image and oscar stats
 
   //Disney
   if(mouseX > 100 && mouseX < 765 && mouseY > 90 && mouseY < 120){
@@ -161,91 +166,5 @@ function draw() {
     text("3", mouseX+265, mouseY+53);
     text("21", mouseX+325, mouseY+79);
     text("Most acting nominations of all time", mouseX+234, mouseY+105);
-  }
-
-  //Loads in Stats of Oscar Winner
-  stats;
-}
-
-function showFace() {
-    for (let d = 0; d < numRows; d++) {
-      bar_dist = dist(wins[d].x, wins[d].y, mouseX, mouseY);
-
-      if (bar_dist < oscar[d].bar_radius) {
-        //celeb[d];
-        oscar[d].displayData();
-      }
-    }
-}
-
-class stats{
-  constructor(){
-    this.x;
-    this.y;
-
-    this.bar_radius;
-    this.design_num;
-    
-    this.data;
-    this.data_split;
-
-    this.init;
-    this.printData;
-  }
-  
-  init(){
-    ths.design_num = int(random(5));
-    this.bar_radius = rect.width/10;
-
-    this.x = mouseX;
-    this.y = mouseY;
-
-    this.data = oscar_data[data_count];
-    this.data_split = split(this.data, ',');
-
-    if(data_count != oscar_data.length){
-      data_count++;
-    }else{
-      print("Its Over.");
-    }
-  }
-
-
-  //Displays a person's Oscar stats
-  displayData(){
-    fill(219, 176, 83);
-    rect(mouseX, mouseY, 500, 120);
-
-    textAlign(LEFT);
-    fill("black");
-
-    text("Name:", mouseX+10, mouseY+30);
-    text("Number of Times Nominated:", mouseX+10, mouseY+55);
-    text("Oscars Won:", mouseX+10, mouseY+80);
-
-    fill(53, 161, 66);
-    text(ths.data_split[0], mouseX+140, mouseY+30);
-    text(ths.data_split[1], mouseX+235, mouseY+55);
-    text(ths.data_split[2], mouseX+290, mouseY+80);
-  }
-
-  printData(){
-    //If unable to get the data
-      if(this.data_split[0] == "") {
-        this.data_split[0] = "undefined";
-      }
-      
-      if(this.data_split[1] == "") {
-        this.data_split[1] = "undefined";
-      }
-      
-      if(this.data_split[2] == "") {
-        this.data_split[2] = "undefined";
-      }
-
-    //Displays Oscar Stats
-      print("Name:", this.data_split[0]);
-      print("Number of Times Nominated:", this.data_split[1]);
-      print("Oscars Won:", this.data_split[2]);
   }
 }
