@@ -61,6 +61,7 @@ function startScreen(){
     button = createButton('PLAY');
     button.position(250, 475);
     button.size(140, 100);
+    //button.mousePressed(intro.play());
     button.mousePressed(playIT);
 
   //scoreBoard();
@@ -70,7 +71,7 @@ function startScreen(){
 
 function playIT(){
   background(stage);
-  //song.play();
+  song.play();
 
   //score/timer area
     image(counter, width/2 - 190, 10, 400, 200);
