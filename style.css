@@ -1,15 +1,16 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  color:beige;
-  background-color: (black);
+body{
+  background: black;
 }
 
-canvas {
-  margin: auto;
-  display: block;
+#canvas1{
+  background: blue;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border: 5px solid white;
 }
 
-h1,p {
-  text-align: center;
+#playerImage, #fireballs{
+  display: none;
 }
