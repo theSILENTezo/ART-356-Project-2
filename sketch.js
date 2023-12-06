@@ -1,141 +1,170 @@
-var screen = 0;
-var font;
-var button;
-//counters
-  var score = 0;
-  var songTime = 182; //song length = 3min., 2sec. -> 182000 ms -> 182 sec
-  var countDown;    //time limit - amount of time passed
-//mp3
-  var song, intro;
-//music note hits
-  var right, left, mid; //positions
-  var cursor, droplet;  //assets
-//backgrounds
-  var startup, stage, end;
+let oscar = [];
+let url = "Celebrities_Oscars.csv";
 
-function preload(){
-  //songs/tune
-    song = loadSound("sounds/Happy_Little_Clouds.mp3");
-    intro = loadSound("sounds/screen_intro.mp3");
-  
+//background image
+  let bg;
+
+//images array
+    let celeb = [];
+
+function preload() {
+  oscar_data = loadTable(url, 'csv', 'header');
+
   //images
-    startup = loadImage("images/bob_ross.jpeg");
-    stage = loadImage("images/canvas.jpeg");
-    cursor = loadImage("images/bob_ross_head.gif");
-    droplet = loadImage("images/cloudy_icon.gif");
-    end = loadImage("images/end.jpg");
-    counter = loadImage("images/score_counter.gif");
+    bg = loadImage("images/oscars_bg.jpg");
 
-  //text
-    font = loadFont("text/CaveatBrush-Regular.ttf");
+   celeb[0] = loadImage("images/Disney_Oscar.jpg");
+   celeb[1] = loadImage("images/Leonardo_DiCaprio.jpg");
+   celeb[2] = loadImage("images/Katharine_Hepburn.jpg");
+   celeb[3] = loadImage("images/Daniel_Day-Lewis.jpg");
+   celeb[4] = loadImage("images/Dennis_Muren.jpg");
+   celeb[5] = loadImage("images/Meryl_Streep.jpg");
 }
 
 function setup() {
-  createCanvas(1200, 630);
-  frameRate(60); //sets number of frames displayed
+  let canvas = createCanvas(1080, 500);
 }
 
 function draw() {
-  //Screen Switch
-    if(screen == 0){
-      startScreen();
-    } else if(screen == 1){
-      playIT();
-    } else if (screen == 2 || countDown < 0){
-      countDown = 0;
-      endScreen();
-    }
-}
-
-function startScreen(){
-  background(startup);
+  background(bg);
   
-  //Title
-    fill(237, 198, 24);
-    textFont(font);
-    textSize(150);
-    text('Happy Cloud', 5, 200);
-    text('Catcher', 100, 330);
+  //Loads in csv's data
+  if (oscar_data){
+    //Receives Data from csv
+      let numRows = oscar_data.getRowCount();
 
-  //button
-    button = createButton('PLAY');
-    button.position(250, 475);
-    button.size(140, 100);
-    //button.mousePressed(intro.play());
-    button.mousePressed(playIT);
-
-  //scoreBoard();
-  //playIT();
-  //endScreen();
-}
-
-function playIT(){
-  background(stage);
-  song.play();
-
-  //score/timer area
-    image(counter, width/2 - 190, 10, 400, 200);
-
-  //live score
-    textSize(75);
-    text("score = " + score, width/2 - 100, 160);
-  //Timer
+      let wins = oscar_data.getColumn('Won');
+      let noms = oscar_data.getColumn('Nominated');
+      let name = oscar_data.getColumn('Celebrity');
     
-    timer();
-    textSize(50);
-    text("Time = " + countDown, width/2 - 90, 100);
-    fill('red');
+    //Creates bar graph 
+    for(let i = 0; i < numRows; i++){
+      let x = 100;
+      let y = 100 + i*50;
+      let w = wins[i]*30;
+      let h = 10;
 
-    
-  //catcher
-    image(cursor, mouseX, height-50, 50, 50);
+      fill(255);
+      textSize(14);
+      text(name[i], x, y-5);
 
-
-    if (screen == 2 || countDown < 0){
-      countDown = 0;
-      endScreen();
+      rect(x, y, w, h);
     }
-}
-
-function endScreen(){
-  background(end);
-
-  //Text
-    textSize(150);
-    textAlign(CENTER);
-    text('GAME OVER', 570, 180);
-    text("Final Score = " + score, 555, height/2 + 25);
-
-  //Button
-    button = createButton('PLAY AGAIN?');
-    button.position(500, 485);
-    button.size(140, 100);
-    button.mousePressed(playIT);
-}
-
-function spawnClouds(){
-   //image(droplet, x, y);
-}
-
-/*
-function button.mousePressed(){
-  if(screen == 0){
-    screen = 1;
-  } else if (screen == 2) {
-    screen = 0;
   }
-}
-*/
 
-function scoreBoard(){
-  score = 0;
-  speed = 2;
-  y = -20;
+  //Displays more stats if user hovers over bar
+    showFace();
+
 }
 
-function timer(){
-    //convert  ms to sec
-      var currentTime = int(millis() / 1000);
-    //Counts numbers down
-      countDown = songTime - currentTime;
+function showFace() {
+  //If user hovers over a bar, display image and oscar stats
+
+  //Disney
+    if(mouseX > 100 && mouseX < 765 && mouseY > 90 && mouseY < 120){
+      fill(219, 176, 83);
+      rect(mouseX, mouseY, 610, 120);
+      image(celeb[0], mouseX, mouseY, 120, 120);
+      textSize(24);
+      fill("black");
+      text("Name:", mouseX+125, mouseY+28);
+      text("Oscars Won:", mouseX+125, mouseY+53);
+      text("Times Nominated:", mouseX+125, mouseY+79);
+      text("Fun Fact:", mouseX+125, mouseY+105);
+      fill(53, 161, 66);
+      text("Walt Disney", mouseX+203, mouseY+28);
+      text("22", mouseX+265, mouseY+53);
+      text("59", mouseX+325, mouseY+79);
+      text("Most wins by a single person", mouseX+234, mouseY+105);
+    }
+
+  //DiCaprio
+    if(mouseX > 100 && mouseX < 135 && mouseY > 150 && mouseY < 165){
+      fill(219, 176, 83);
+      rect(mouseX, mouseY, 610, 120);
+      image(celeb[1], mouseX, mouseY, 120, 120);
+      textSize(24);
+      fill("black");
+      text("Name:", mouseX+125, mouseY+28);
+      text("Oscars Won:", mouseX+125, mouseY+53);
+      text("Times Nominated:", mouseX+125, mouseY+79);
+      text("Fun Fact:", mouseX+125, mouseY+105);
+      fill(53, 161, 66);
+      text("Leonardo DiCaprio", mouseX+203, mouseY+28);
+      text("1", mouseX+265, mouseY+53);
+      text("7", mouseX+325, mouseY+79);
+      text("Finally got one", mouseX+234, mouseY+105);
+    }
+
+  //Hepburn
+    if(mouseX > 100 && mouseX < 222 && mouseY > 200 && mouseY < 215){
+      fill(219, 176, 83);
+      rect(mouseX, mouseY, 610, 120);
+      image(celeb[2], mouseX, mouseY, 120, 120);
+      textSize(24);
+      fill("black");
+      text("Name:", mouseX+125, mouseY+28);
+      text("Oscars Won:", mouseX+125, mouseY+53);
+      text("Times Nominated:", mouseX+125, mouseY+79);
+      text("Fun Fact:", mouseX+125, mouseY+105);
+      fill(53, 161, 66);
+      text("Katharine Hepburn", mouseX+203, mouseY+28);
+      text("4", mouseX+265, mouseY+53);
+      text("12", mouseX+325, mouseY+79);
+      text("Most wins for best actress", mouseX+234, mouseY+105);
+    }
+
+  //Day-Lewis
+    if(mouseX > 100 && mouseX < 193 && mouseY > 250 && mouseY < 265){
+      fill(219, 176, 83);
+      rect(mouseX, mouseY, 610, 120);
+      image(celeb[3], mouseX, mouseY, 120, 120);
+      textSize(24);
+      fill("black");
+      text("Name:", mouseX+125, mouseY+28);
+      text("Oscars Won:", mouseX+125, mouseY+53);
+      text("Times Nominated:", mouseX+125, mouseY+79);
+      text("Fun Fact:", mouseX+125, mouseY+105);
+      fill(53, 161, 66);
+      text("Daniel Day-Lewis", mouseX+203, mouseY+28);
+      text("3", mouseX+265, mouseY+53);
+      text("6", mouseX+325, mouseY+79);
+      text("Most wins for best actor", mouseX+234, mouseY+105);
+    }
+
+  //Muren
+    if(mouseX > 100 && mouseX < 376 && mouseY > 300 && mouseY < 315){
+      fill(219, 176, 83);
+      rect(mouseX, mouseY, 610, 120);
+      image(celeb[4], mouseX, mouseY, 120, 120);
+      textSize(24);
+      fill("black");
+      text("Name:", mouseX+125, mouseY+28);
+      text("Oscars Won:", mouseX+125, mouseY+53);
+      text("Times Nominated:", mouseX+125, mouseY+79);
+      text("Fun Fact:", mouseX+125, mouseY+105);
+      fill(53, 161, 66);
+      text("Dennis Muren", mouseX+203, mouseY+28);
+      text("9", mouseX+265, mouseY+53);
+      text("13", mouseX+325, mouseY+79);
+      text("Most wins for visual effects", mouseX+234, mouseY+105);
+    }
+
+  //Streep
+    if(mouseX > 100 && mouseX < 193 && mouseY > 351 && mouseY < 363){
+      fill(219, 176, 83);
+      rect(mouseX, mouseY, 610, 120);
+      image(celeb[5], mouseX, mouseY, 120, 120);
+      textSize(24);
+      fill("black");
+      text("Name:", mouseX+125, mouseY+28);
+      text("Oscars Won:", mouseX+125, mouseY+53);
+      text("Times Nominated:", mouseX+125, mouseY+79);
+      text("Fun Fact:", mouseX+125, mouseY+105);
+      fill(53, 161, 66);
+      text("Meryl Streep", mouseX+203, mouseY+28);
+      text("3", mouseX+265, mouseY+53);
+      text("21", mouseX+325, mouseY+79);
+      text("Most acting nominations of all time", mouseX+234, mouseY+105);
+    }
 }
